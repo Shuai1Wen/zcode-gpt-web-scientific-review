@@ -1,0 +1,10 @@
+{
+  "name": "gpt-web-scientific-review",
+  "version": "0.1.1",
+  "description": "Independent scientific review through ChatGPT Web with blind review, Extra High/Pro routing, Pro heartbeats, frozen evidence, and evidence-based adjudication.",
+  "author": {"name": "Research Review Tools"},
+  "license": "MIT",
+  "keywords": ["research", "scientific-review", "chatgpt-web", "browser", "pro", "extra-high"],
+  "commands": "commands",
+  "skills": "skills"
+}
