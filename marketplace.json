@@ -6,7 +6,7 @@
       "name": "gpt-web-scientific-review",
       "source": "./plugins/gpt-web-scientific-review",
       "description": "Independent scientific review through ChatGPT Web with blind review, Extra High/Pro routing, Pro heartbeats, frozen evidence, and adjudication.",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "category": "research",
       "tags": ["research", "review", "chatgpt-web", "browser", "pro", "scientific-review"],
       "strict": true

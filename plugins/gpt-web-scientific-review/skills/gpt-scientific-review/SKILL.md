@@ -4,7 +4,7 @@ description: Build a blind, publication-oriented scientific review packet and pr
 when_to_use: Use before the first ChatGPT Web submission and again when constructing an adversarial comparison prompt after the blind response has been frozen.
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.1.2
 ---
 
 # Scientific Review Packet Builder
@@ -61,6 +61,8 @@ Publication target, no wet lab, compute, data restrictions, no leakage, unseen-w
 ## 8. Questions the reviewer must adjudicate
 Numbered, answerable questions.
 
+Main-line rule for this section: every question must be capable of changing the verdict (KEEP / REVISE / RECONSTRUCT / REJECT) or the design of the main method. Do not list audit-style, completeness-style, or engineering questions here — if a question's answer cannot alter the central conclusion, it does not belong in the packet.
+
 ## 9. Evidence provenance / uncertainty
 What is measured, inferred, assumed, or not yet verified.
 ```
@@ -106,6 +108,26 @@ For every major criticism, identify the exact failure mechanism and what evidenc
 would change your conclusion. Do not demand complexity for its own sake, and do
 not use a simple linear explanation where the stated relationship requires a
 richer model unless linearity is justified as a baseline or approximation.
+
+Main-line discipline for your solution sections (H and I) — this is a hard
+requirement:
+- Every change in H must act on the central claim's mechanism: the model, the
+  identification strategy, the information flow, or the evaluation of the claim
+  itself. A change that cannot alter the verdict does not belong in H; omit it
+  rather than list it.
+- I must contain only experiments that can falsify or decisively support the
+  central claim. Bundle nothing else into I.
+- Do NOT include audit-grade work anywhere in H or I: code audits, logging,
+  testing infrastructure, refactors, seed/variance checks, hyperparameter
+  hygiene, documentation, compliance checklists, or "additional ablations for
+  completeness" — unless the stated problem itself is about them.
+- Keep supporting / robustness / engineering items only inside G, as one short
+  list, and only items that materially interpret the core result.
+- If you catch yourself listing many peripheral fixes, stop and compress:
+  restate the single main-line failure and the smallest set of changes that
+  resolves it. H should normally contain 1-4 changes, I 1-3 experiments.
+- Your H and I sections are read as THE solution. Anything incapable of
+  changing the verdict must be omitted, not appended.
 
 Return the following sections:
 A. Actual scientific question
@@ -213,6 +235,10 @@ conflict by conflict. For each conflict state:
 4. whether the disagreement is core, supporting, robustness, or engineering;
 5. which position is better supported, or whether it remains unresolved;
 6. exact change required.
+
+Apply the same main-line discipline as your blind review: point 6 must act on
+the central claim's mechanism, and audit-grade changes (code hygiene, logging,
+seeds, completeness ablations, documentation) are omitted entirely, not listed.
 
 End with an updated verdict and list every place where your view changed after
 seeing the other position, with the evidence that caused the change.

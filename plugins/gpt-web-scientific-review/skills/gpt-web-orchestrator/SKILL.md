@@ -4,7 +4,7 @@ description: Orchestrate an independent scientific review through ChatGPT Web fr
 when_to_use: Use for deliberate low-frequency research review tasks where ChatGPT Web should act as an independent external reviewer rather than as an API backend.
 license: MIT
 metadata:
-  version: 0.1.1
+  version: 0.1.2
 ---
 
 # GPT Web Scientific Review Orchestrator
@@ -221,6 +221,8 @@ The final output should distinguish:
 - supporting/robustness changes;
 - engineering-only notes.
 
+Main-line discipline for the final output: apply the adjudicator's main-line gate before presenting anything to the user. Lead with the 1-4 changes that act on the central claim's mechanism and the 1-3 experiments that can falsify it. Audit-grade suggestions (code hygiene, logging, seeds, completeness ablations, documentation) are never presented as review results — at most one aggregated "dropped as off-main-line" line. The deliverable is the smallest main-line fix, not an exhaustive findings report.
+
 ## Completion criteria
 
 A review job is `DONE` only when:
@@ -231,7 +233,8 @@ A review job is `DONE` only when:
 - any requested challenge phase is captured;
 - adjudication is evidence-based;
 - unresolved questions are explicit;
-- the final recommendation returns to the original scientific objective.
+- the final recommendation returns to the original scientific objective;
+- the final recommendation passed the main-line gate (no audit-grade items presented as results).
 
 ## Safety and service boundary
 

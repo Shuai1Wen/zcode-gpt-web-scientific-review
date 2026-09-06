@@ -4,7 +4,7 @@ description: Adjudicate disagreements between ZCode and a frozen external GPT We
 when_to_use: Use at the end of a GPT Web scientific-review job; never use it to overwrite or rewrite the frozen raw review.
 license: MIT
 metadata:
-  version: 0.1.0
+  version: 0.1.2
 ---
 
 # Evidence-Based Review Adjudicator
@@ -95,6 +95,20 @@ After adjudicating individual issues, explicitly answer:
 
 Do not allow a long checklist of peripheral checks to obscure a missing central test.
 
+### Main-line gate (hard rule)
+
+Before anything enters the action lists, test every accepted item with one question:
+
+```text
+Can resolving this item change the final verdict or the design of the main method?
+```
+
+- If yes → it may enter "Core method changes" or "Core experiments".
+- If no → it goes to the supporting list at most.
+- Audit-grade items (code hygiene, logging, testing infra, refactors, seed/variance checks, hyperparameter hygiene, documentation, completeness ablations, compliance checklists) are dropped from the action lists entirely. At most, record them as one aggregated line under "Dropped as off-main-line" so the pruning is visible.
+
+The user asked for a scientific review, not an audit report: the deliverable is the smallest set of main-line changes that fixes the central problem, not an exhaustive findings list.
+
 ## Step 5 — Produce actionable reconstruction
 
 If the verdict requires changes, specify them at the correct level:
@@ -148,13 +162,16 @@ KEEP / REVISE / RECONSTRUCT / REJECT
 ...
 
 ## Core method changes
-...
+Only items that passed the main-line gate (can change the verdict or the main design).
 
 ## Core experiments
-...
+Only experiments that can falsify or decisively support the central claim.
 
 ## Supporting / robustness / engineering items
-...
+Capped to items that materially interpret the core result.
+
+## Dropped as off-main-line
+One aggregated line listing audit-grade suggestions that were pruned and why.
 
 ## Unresolved questions and decisive evidence needed
 ...

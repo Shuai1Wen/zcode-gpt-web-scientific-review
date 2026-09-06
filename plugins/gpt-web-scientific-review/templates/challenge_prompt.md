@@ -11,6 +11,8 @@ For each substantive disagreement state:
 5. which position is better supported, or whether it remains unresolved;
 6. the exact change required.
 
+Apply the same main-line discipline as your blind review: point 6 must act on the central claim's mechanism, and audit-grade changes (code hygiene, logging, seeds, completeness ablations, documentation) are omitted entirely, not listed.
+
 End with:
 
 - updated verdict;

@@ -6,6 +6,14 @@ Do not replace the main scientific question with engineering hygiene, robustness
 
 For every major criticism, identify the exact failure mechanism and what evidence would change your conclusion. Do not demand complexity for its own sake. Do not use a simple linear explanation for a relationship that is structurally nonlinear unless linearity is justified as a baseline or approximation.
 
+Main-line discipline for your solution sections (H and I) — hard requirement:
+- Every change in H must act on the central claim's mechanism (model, identification, information flow, or evaluation of the claim). A change that cannot alter the verdict does not belong in H; omit it rather than list it.
+- I must contain only experiments that can falsify or decisively support the central claim.
+- Do NOT include audit-grade work anywhere in H or I: code audits, logging, testing infrastructure, refactors, seed/variance checks, hyperparameter hygiene, documentation, compliance checklists, or "additional ablations for completeness" — unless the stated problem itself is about them.
+- Supporting/robustness/engineering items appear only inside G, as one short list, only when they materially interpret the core result.
+- If you catch yourself listing many peripheral fixes, stop and compress: restate the single main-line failure and the smallest set of changes that resolves it. H normally has 1-4 changes, I has 1-3 experiments.
+- H and I are read as THE solution. Anything incapable of changing the verdict must be omitted, not appended.
+
 Return:
 
 A. Actual scientific question
